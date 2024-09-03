@@ -9,5 +9,3 @@
 |shshja|jskasjaa|
 ________________
 
-|shshja|jskasjaa|
-________________
