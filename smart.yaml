@@ -122,7 +122,7 @@ proxy-groups:
   - {name: ♻️ 香港智能, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: ♻️ 日本智能, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
   - {name: ♻️ 美国智能, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 智能选择, type: smart, uselightgbm: true, collectdata: true, interval: 300, include-all: true, filter: "(?=.*(直连|下载|港|日|韩|新|深|美).)*$"}
+  - {name: ♻️ 智能选择, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "(?=.*(直连|下载|港|日|韩|新|深|美).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
 
