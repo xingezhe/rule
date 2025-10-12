@@ -99,6 +99,7 @@ dns:
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
 pr: &pr {type: select, proxies: [🚀 默认代理,♻️ 智能选择,♻️ 香港智能, ♻️ 日本智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
 proxy-groups:
+  - {name: ad_block, type: select, proxies: [REJECT, 直连]}
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 智能选择,♻️ 香港智能, ♻️ 日本智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
@@ -127,7 +128,7 @@ proxy-groups:
   - {name: ♻️ 智能选择, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "^((?!(剩余流量|距离下次|套餐到期)).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(剩余流量|距离下次|套餐到期)).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
-
+ 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
@@ -185,3 +186,6 @@ rule-providers:
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
   netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
   twitter_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs"}
+  facebook_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/facebook.mrs"}
+  tiktok_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/tiktok.mrs"}
+  ad_block: { <<: *domain, url: "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad.mrs", interval: 86400 }
