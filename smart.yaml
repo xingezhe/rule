@@ -99,7 +99,6 @@ dns:
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
 pr: &pr {type: select, proxies: [🚀 默认代理,♻️ 智能选择,♻️ 香港智能, ♻️ 日本智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
 proxy-groups:
-  - {name: ad_block, type: select, proxies: [REJECT, 直连]}
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 智能选择,♻️ 香港智能, ♻️ 日本智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
@@ -123,7 +122,7 @@ proxy-groups:
   - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
   - {name: ♻️ 香港智能, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "(?=.*(亚太普速|港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: ♻️ 日本智能, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "(?=.*(日本|JP|(?i)Japan))*$" }
+  - {name: ♻️ 日本智能, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "(?=.*(日本|JP|(?i)Japan)|东京)*$" }
   - {name: ♻️ 美国智能, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, policy-priority: "亚太普速:1.2;下载专用:0.8", filter: "(?=.*(亚太普速|美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 智能选择, type: smart, uselightgbm: true, collectdata: false, interval: 300, include-all: true, filter: "^((?!(剩余流量|距离下次|套餐到期)).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(剩余流量|距离下次|套餐到期)).)*$"}
@@ -188,4 +187,3 @@ rule-providers:
   twitter_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs"}
   facebook_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/facebook.mrs"}
   tiktok_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/tiktok.mrs"}
-  ad_block: { <<: *domain, url: "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad.mrs", interval: 86400 }
