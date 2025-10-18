@@ -83,6 +83,7 @@ dns:
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
     - "rule-set:private_domain,cn_domain"
+    - "rule-set:ad_block"
     - "+.msftconnecttest.com"
     - "+.msftncsi.com"
     - "time.*.com"
@@ -187,3 +188,4 @@ rule-providers:
   twitter_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs"}
   facebook_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/facebook.mrs"}
   tiktok_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/tiktok.mrs"}
+  ad_block: { <<: *domain, url: "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad.mrs"}
